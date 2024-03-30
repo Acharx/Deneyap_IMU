@@ -1,0 +1,39 @@
+#include "lsm6dsm.h"
+
+LSM6DSM IMU;
+
+float gyro_deger_x;
+float gyro_deger_y;
+float gyro_deger_z;
+
+float accel_deger_x;
+float accel_deger_y;
+float accel_deger_z;
+
+void setup (){
+    Serial.begin(115200);
+    IMU.begin();
+    delay(100);
+}
+
+void loop(){
+    gyro_deger_x = IMU.readFloatGyroX();
+    gyro_deger_y = IMU.readFloatGyroY();
+    gyro_deger_z = IMU.readFloatGyroZ();
+
+    accel_deger_x = IMU.readFloatAccelX();
+    accel_deger_y = IMU.readFloatAccelY();
+    accel_deger_z = IMU.readFloatAccelZ();
+
+    Serial.printf("Gyroscope Value   : X  %f, Y %f, Z %f \n",gyro_deger_x,gyro_deger_y,gyro_deger_z);
+    Serial.printf("Accelerator Value : X  %f, Y %f, Z %f \n",accel_deger_x,accel_deger_y,accel_deger_z);
+
+    Serial.printf("%f",gyro_deger_x);
+    Serial.printf("%f",gyro_deger_y);
+    Serial.printf("%f",gyro_deger_z);
+
+    Serial.printf("%f",accel_deger_x);
+    Serial.printf("%f",accel_deger_y);
+    Serial.printf("%f",accel_deger_z);
+
+}
